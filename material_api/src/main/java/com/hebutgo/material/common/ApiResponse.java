@@ -57,6 +57,46 @@ public final class ApiResponse<T> {
 
     }
 
+    public static int getSuccessCode() {
+        return SUCCESS_CODE;
+    }
+
+    public static int getErrorCode() {
+        return ERROR_CODE;
+    }
+
+    public static ApiResponse getSUCCESS() {
+        return SUCCESS;
+    }
+
+    public static ApiResponse getERROR() {
+        return ERROR;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
+
     public boolean isSuccess() {
         return code == 0;
     }

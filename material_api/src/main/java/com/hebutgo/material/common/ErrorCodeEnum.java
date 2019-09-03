@@ -19,6 +19,22 @@ public enum ErrorCodeEnum {
     @Getter
     private String msg;
 
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
     public static String message(int code) {
         return Arrays.stream(values())
                 .filter(l-> l.code == code)
