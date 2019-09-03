@@ -2,8 +2,7 @@ package com.hebutgo.material.repository;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "user")
@@ -24,6 +23,8 @@ public class User {
 //    PRIMARY KEY (`id`),
 //    UNIQUE KEY `user_id` (`user_id`)
 //            ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     Integer id;
     String userId;
     String password;

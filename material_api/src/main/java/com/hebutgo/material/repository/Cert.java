@@ -2,8 +2,7 @@ package com.hebutgo.material.repository;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 
 @Entity
@@ -25,6 +24,8 @@ public class Cert {
 //    KEY `user_id`(`user_id`),
 //    KEY `material_id`(`material_id`)
 //            )ENGINE=INNODB DEFAULT charset=utf8 COMMENT '购物车表';
+@Id
+@GeneratedValue(strategy= GenerationType.IDENTITY)
     Integer id;
     String certId;
     String userId;

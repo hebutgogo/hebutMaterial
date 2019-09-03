@@ -2,8 +2,7 @@ package com.hebutgo.material.repository;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 
 @Entity
@@ -24,6 +23,8 @@ public class Order {
 //    UNIQUE KEY `order_id` (`order_id`),
 //    KEY `user_id` (`user_id`)
 //            )ENGINE = INNODB DEFAULT charset = utf8 COMMENT '订单表';
+@Id
+@GeneratedValue(strategy= GenerationType.IDENTITY)
     Integer id;
     String orderId;
     String userId;

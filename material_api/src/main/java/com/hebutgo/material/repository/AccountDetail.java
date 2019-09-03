@@ -2,8 +2,7 @@ package com.hebutgo.material.repository;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "account_detail")
@@ -25,6 +24,8 @@ public class AccountDetail {
 //    KEY `order_id`(`order_id`),
 //    KEY `account_id`(`account_id`)
 //            )ENGINE = INNODB DEFAULT charset = utf8 COMMENT '账户流水表';
+@Id
+@GeneratedValue(strategy= GenerationType.IDENTITY)
     Integer id;
     String accountDetailId;
     String accountId;

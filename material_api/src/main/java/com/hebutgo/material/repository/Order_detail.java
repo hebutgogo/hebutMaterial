@@ -3,8 +3,7 @@ package com.hebutgo.material.repository;
 import lombok.Data;
 import org.springframework.data.annotation.TypeAlias;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 
 @Entity
@@ -28,6 +27,8 @@ public class Order_detail {
 //    KEY `order_id`(`order_id`),
 //    KEY `material_id`(`material_id`)
 //            )ENGINE = INNODB DEFAULT charset = utf8 COMMENT '订单详情表';
+@Id
+@GeneratedValue(strategy= GenerationType.IDENTITY)
     Integer id;
     String orderDetialId;
     String orderId;

@@ -2,8 +2,7 @@ package com.hebutgo.material.repository;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 
 @Entity
@@ -28,6 +27,8 @@ public class Material {
 //    UNIQUE KEY `material_id` (`material_id`),
 //    KEY `material_name` (`material_name`)
 //            )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='素材表';
+@Id
+@GeneratedValue(strategy= GenerationType.IDENTITY)
     Integer id;
     String materialId;
     String tagIds;
