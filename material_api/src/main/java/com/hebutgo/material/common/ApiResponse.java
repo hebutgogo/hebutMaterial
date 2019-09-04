@@ -2,8 +2,9 @@ package com.hebutgo.material.common;
 
 import lombok.Getter;
 import lombok.Setter;
-
+//
 public final class ApiResponse<T> {
+
     /**
      * 0 成功
      */
