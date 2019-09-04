@@ -26,4 +26,5 @@ public class MaterialVO {
     private String materialUrl;
 
     private List<FileVO> showPicUrls;
+
 }
