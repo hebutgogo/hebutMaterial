@@ -1,4 +1,4 @@
-package com.hebutgo.material.repository;
+package com.hebutgo.material.material.repository;
 
 import lombok.Data;
 import org.omg.PortableInterceptor.INACTIVE;

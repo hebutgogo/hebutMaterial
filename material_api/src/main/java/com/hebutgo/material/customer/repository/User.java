@@ -1,4 +1,4 @@
-package com.hebutgo.material.repository;
+package com.hebutgo.material.customer.repository;
 
 import lombok.Data;
 
