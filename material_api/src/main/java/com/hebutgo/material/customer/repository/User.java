@@ -34,6 +34,6 @@ public class User {
     public String wechatId;
     public String status;
     public Long createTime;
-    public Long updataTime;
+    public Long updateTime;
     public String token;
 }
