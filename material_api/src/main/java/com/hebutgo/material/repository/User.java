@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Data
 public class User {
     //    -- 用户表
-//    CREATE TABLE `user` (
+//    CREATE TABLE `user` (////sdfghjkl
 //            `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
 //            `user_id` varchar(255) NOT NULL COMMENT '用户id',
 //            `password` varchar(255) NOT NULL COMMENT '密码',
