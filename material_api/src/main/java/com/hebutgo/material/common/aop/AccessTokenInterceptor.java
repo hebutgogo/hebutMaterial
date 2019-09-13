@@ -9,6 +9,8 @@ import com.hebutgo.material.common.annotation.IgnoreAccessToken;
 import com.hebutgo.material.common.exception.BizException;
 //import com.hebutgo.material.user.repository.User;
 //import com.hebutgo.material.user.repository.UserRepository;
+import com.hebutgo.material.customer.repository.User;
+import com.hebutgo.material.customer.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.method.HandlerMethod;
@@ -29,8 +31,8 @@ public class AccessTokenInterceptor extends HandlerInterceptorAdapter {
 
 	private Logger logger = LoggerFactory.getLogger(AccessTokenInterceptor.class);
 
-//	@Resource
-//	private UserRepository userRepository;
+	@Resource
+	private UserRepository userRepository;
 
 	Gson gson = new Gson();
 
@@ -109,13 +111,13 @@ public class AccessTokenInterceptor extends HandlerInterceptorAdapter {
 			throw new BizException(ErrorCodeEnum.INVALID_TOKEN);
 		}
 
-//		User user = userRepository.findByToken(token);
-//		if (Objects.isNull(user)) {
-//			logger.warn("validateToken token验证失败 token:{}", token);
-//			throw new Exception(ErrorCodeEnum.INVALID_TOKEN);
-//		}
-//        request.setAttribute(CommonConstant.LOGIN_USER, user);
-//        logger.info("validateToken 登录用的信息 token:{} userInfo:{}", token, gson.toJson(user));
+		User user = userRepository.findByToken(token);
+		if (Objects.isNull(user)) {
+			logger.warn("validateToken token验证失败 token:{}", token);
+			throw new BizException(ErrorCodeEnum.INVALID_TOKEN);
+		}
+        request.setAttribute(CommonConstant.LOGIN_USER, user);
+        logger.info("validateToken 登录用的信息 token:{} userInfo:{}", token, gson.toJson(user));
 		return true;
 	}
 }
