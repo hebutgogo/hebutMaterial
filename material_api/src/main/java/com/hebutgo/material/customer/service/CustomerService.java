@@ -1,5 +1,6 @@
 package com.hebutgo.material.customer.service;
 
+import com.hebutgo.material.common.ApiResponse;
 import com.hebutgo.material.customer.pojo.UserVO;
 import com.hebutgo.material.customer.repository.User;
 import com.hebutgo.material.customer.repository.UserRepository;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
 import javax.annotation.Resource;
+import javax.xml.crypto.Data;
 
 @Service
 public class CustomerService {
@@ -81,4 +83,47 @@ public class CustomerService {
         userVO.setGender(user.getGender());
         return userVO;
     }
+
+    /**
+     * 用户信息的显示
+     * @param token
+     * @return User
+     */
+    public User infoDetail(String token)
+    {
+        User user = userRepository.findByToken(token);
+        return user;
+    }
+
+    /**
+     * 修改用户信息
+     * @param token
+     * @param newUserName
+     * @param newEmail
+     * @param newWechatId
+     * @return
+     */
+    public User changeInfo(String token, String newUserName, String newEmail, String newWechatId) {
+        User user = userRepository.findByToken(token);
+        user.setUserName(newUserName);
+        user.setEmail(newEmail);
+        user.setWechatId(newWechatId);
+        user.setUpdateTime(System.currentTimeMillis());
+        userRepository.save(user);
+        return user;
+    }
+
+    /**
+     * 修改密码
+     * @param newPassword
+     * @param token
+     * @return user
+     */
+    public User changePassword(String newPassword,String token) {
+        User user = userRepository.findByToken(token);
+        user.setPassword(newPassword);
+        userRepository.save(user);
+        return user;
+    }
+
 }

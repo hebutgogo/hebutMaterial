@@ -2,6 +2,7 @@ package com.hebutgo.material.customer.controller;
 
 import com.hebutgo.material.common.ApiResponse;
 import com.hebutgo.material.customer.pojo.UserVO;
+import com.hebutgo.material.customer.repository.User;
 import com.hebutgo.material.customer.service.CustomerService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -58,5 +59,54 @@ public class CustomerController {
             return ApiResponse.error(e.getMessage());
         }
         return ApiResponse.success(userVO);
+    }
+
+    /**
+     * 用户信息的显示
+     * @param token        token
+     * @return       User
+     */
+    @RequestMapping(value = "infoDetail",method = RequestMethod.POST)
+    public ApiResponse infoDetail(
+            @RequestParam(value = "token") String token
+    ){
+        User user = customerService.infoDetail(token);
+        return ApiResponse.success(user);
+    }
+
+    /**
+     * 修改用户信息
+     * @param token
+     * @param newUserName
+     * @param newEmail
+     * @param newWechatId
+     * @return User
+     */
+    @RequestMapping(value = "changeInfo",method = RequestMethod.POST)
+    public ApiResponse changeInfo(
+            @RequestParam(value = "token") String token,
+            @RequestParam(value = "newUserName") String newUserName,
+            @RequestParam(value = "newEmail") String newEmail,
+            @RequestParam(value = "newWechatId") String newWechatId
+    ){
+        User user = new User();
+        user = customerService.changeInfo(token,newUserName,newEmail,newWechatId);
+        return ApiResponse.success(user);
+    }
+
+    /**
+     * 修改密码
+     * @param newPassword
+     * @param token
+     * @return  user
+     */
+    @RequestMapping(value = "changePassword",method = RequestMethod.POST)
+    public ApiResponse changePassword(
+            @RequestParam(value = "newPassword") String newPassword,
+            @RequestParam(value = "token") String token
+    ){
+       User user = new User();
+       user = customerService.changePassword(newPassword,token);
+       return ApiResponse.success(user);
     }
 }
