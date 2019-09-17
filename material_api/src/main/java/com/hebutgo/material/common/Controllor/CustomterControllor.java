@@ -32,6 +32,20 @@ public class CustomterControllor {
         }
         return ApiResponse.success("注册成功");
     }
+
+    @IgnoreAccessToken
+    @RequestMapping(value = "login", method = RequestMethod.POST)
+    public ApiResponse register(
+            @RequestParam(value = "userId") String userId,
+            @RequestParam(value = "password") String password
+    ) {
+        try {
+            userService.login(userId, password);
+        } catch (Exception e) {
+            return ApiResponse.error("登录失败");
+        }
+        return ApiResponse.success("登录成功");
+    }
 }
 
 

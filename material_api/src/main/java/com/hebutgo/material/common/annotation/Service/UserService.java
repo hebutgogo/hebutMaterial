@@ -6,26 +6,28 @@ import com.hebutgo.material.repository.User;
 import com.hebutgo.material.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
 
 @Service
 
 public class UserService {
+
     @Autowired
     UserRepository userRepository;
-    public ApiResponse<Integer> register(String userId, String password, String userName, String gender ){
+
+    public ApiResponse register(String userId, String password, String userName, String gender) {
         User user = new User();
-        user = userRepository.findByUserIdAndPassword(userId,password);
-        if(user != null){
+        user = userRepository.findByUserIdAndPassword(userId, password);
+        if (user != null) {
             return ApiResponse.error("用户已存在");
-        }
-        else{
+        } else {
             try {
                 user.setUserId(userId);
                 user.setPassword(password);
                 user.setGender(gender);
                 user.setUserName(userName);
                 userRepository.save(user);
-            } catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
                 return ApiResponse.error("注册失败");
             }
@@ -33,4 +35,20 @@ public class UserService {
         }
     }
 
+    public ApiResponse login(String userId, String password) {
+        User user = userRepository.findByUserIdAndPassword(userId, password);
+        if (user != null) {
+            try {
+                String token;
+                token = DigestUtils.md5DigestAsHex((userId + System.currentTimeMillis()).getBytes());
+                user.setToken(token);
+                userRepository.save(user);
+            } catch (Exception e) {
+                return ApiResponse.error("登录失败");
+            }
+            return ApiResponse.success("登录成功");
+        } else {
+            return ApiResponse.error("登录失败");
+        }
+    }
 }

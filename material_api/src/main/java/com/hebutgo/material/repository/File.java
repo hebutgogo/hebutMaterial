@@ -1,7 +1,6 @@
 package com.hebutgo.material.repository;
 
 import lombok.Data;
-import org.omg.PortableInterceptor.INACTIVE;
 
 import javax.persistence.*;
 
