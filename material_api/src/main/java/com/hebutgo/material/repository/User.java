@@ -14,6 +14,7 @@ public class User {
 //            `user_id` varchar(255) NOT NULL COMMENT '用户id',
 //            `password` varchar(255) NOT NULL COMMENT '密码',
 //            `user_name` varchar(255) DEFAULT '' COMMENT '用户姓名',
+    //        `token`  varchar(255)     `token验证`
 //            `gender` varchar(2) DEFAULT '0' COMMENT '性别（0保密，1男，2女）',
 //            `email` varchar(255) DEFAULT '' COMMENT '邮箱',
 //            `wechat_id` varchar(255) DEFAULT NULL COMMENT '微信id',
@@ -29,6 +30,7 @@ public class User {
     String userId;
     String password;
     String userName;
+    String token;
     String gender;
     String email;
     String wechatId;
@@ -115,4 +117,8 @@ public class User {
     public void setUpdataTime(Long updataTime) {
         this.updataTime = updataTime;
     }
+
+    public String getToken() { return token; }
+
+    public void setToken(String token) { this.token = token;}
 }
