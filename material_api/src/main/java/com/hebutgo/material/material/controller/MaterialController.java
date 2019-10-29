@@ -2,6 +2,7 @@ package com.hebutgo.material.material.controller;
 
 import com.hebutgo.material.common.ApiResponse;
 import com.hebutgo.material.common.annotation.AccessToken;
+import com.hebutgo.material.common.annotation.IgnoreAccessToken;
 import com.hebutgo.material.material.pojo.MaterialVO;
 import com.hebutgo.material.material.repository.Material;
 import com.hebutgo.material.material.service.MaterialService;
@@ -21,6 +22,7 @@ public class MaterialController {
     @Resource
     MaterialService materialService;
 
+    @IgnoreAccessToken
     @RequestMapping(value = "getMaterialList", method = RequestMethod.POST)
     public ApiResponse getMaterialList(
 

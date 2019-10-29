@@ -7,5 +7,5 @@ import java.util.List;
 public interface FileRespository extends JpaRepository<File,Integer> {
     File findByFileId(String fileId);
 
-    List<File> findAllByFileId(List<String> showFileIdsList);
+    List<File> findByFileIdIn(List<String> showFileIdsList);
 }

@@ -36,7 +36,7 @@ public class MaterialService {
                 }
 
                 List<FileVO> fileVOS = new ArrayList<>();
-                List<File> showFiles = fileRespository.findAllByFileId(showFileIdsList);
+                List<File> showFiles = fileRespository.findByFileIdIn(showFileIdsList);
                 for (File file1:showFiles
                      ) {
                     FileVO fileVO = new FileVO();
